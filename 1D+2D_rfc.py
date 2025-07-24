@@ -23,7 +23,7 @@ CATEGORY_MAP = {agent: cat for cat, agents in COUPLING_AGENT_CATEGORIES.items() 
 pathToDir = "/content/drive/MyDrive/ordMLFiles"
 allData = pd.DataFrame()
 for filename in os.listdir(pathToDir):
-    if filename.endswith(".csv") and "MedChem_AMIDE_with_optXYZ" not in filename:
+    if filename.endswith(".csv"):
         df = pd.read_csv(os.path.join(pathToDir, filename))
         if "Reaction ID" in df.columns:
             df = df.drop(columns=["Reaction ID"])
