@@ -15,6 +15,11 @@ from ase import Atoms
 
 pathToDir = "/content/drive/MyDrive/ordMLFiles"
 allData = pd.DataFrame()
+for filename in os.listdir(pathToDir):
+    if filename.endswith(".csv"):
+        pathToFile = os.path.join(pathToDir, filename)
+        data = pd.read_csv(pathToFile)
+        allData = pd.concat([allData, data], ignore_index=True)
 
 data = allData.copy()
 data = data[data['Yield'] < 100]
