@@ -26,10 +26,9 @@ pathToDir = "/content/drive/MyDrive/ordMLFiles"
 allData = pd.DataFrame()
 for filename in os.listdir(pathToDir):
     if filename.endswith(".csv"):
-        df = pd.read_csv(os.path.join(pathToDir, filename))
-        if "Reaction ID" in df.columns:
-            df = df.drop(columns=["Reaction ID"])
-        allData = pd.concat([allData, df], ignore_index=True)
+        pathToFile = os.path.join(pathToDir, filename)
+        data = pd.read_csv(pathToFile)
+        allData = pd.concat([allData, data], ignore_index=True)
 
 data = allData.copy()
 data = data[data['Yield'].notna() & data['Coupling Agent'].notna() & (data['Yield'] < 100) & (data['Yield'] != 0)]
