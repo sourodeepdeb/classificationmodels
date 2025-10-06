@@ -122,10 +122,6 @@ def three_d_features(elems, coords, prefix):
     return out
 
 def try_soap(elems, coords, prefix):
-    """
-    Compute SOAP vector if dscribe & ase are available. Returns dict of {f"{prefix}_SOAP_i": value}.
-    If not available, returns empty dict (silently).
-    """
     try:
         from ase import Atoms
         from dscribe.descriptors import SOAP
