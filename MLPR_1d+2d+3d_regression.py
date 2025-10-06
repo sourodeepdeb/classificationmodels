@@ -49,7 +49,6 @@ if target not in combined_data.columns:
 combined_data[target] = pd.to_numeric(combined_data[target], errors='coerce').clip(0, 100)
 
 def parse_xyz(xyz_str):
-    """Return (elements list, Nx3 coords array) or ([], None) if not parsable."""
     if not isinstance(xyz_str, str) or not xyz_str.strip():
         return [], None
     elems = []
