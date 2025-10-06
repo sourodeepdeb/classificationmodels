@@ -16,12 +16,11 @@ from ase import Atoms
 pathToDir = "/content/drive/MyDrive/ordMLFiles"
 allData = pd.DataFrame()
 for filename in os.listdir(pathToDir):
-    if filename.endswith(".csv") and "MedChem_AMIDE_with_optXYZ" not in filename:
+    if filename.endswith(".csv"):
         pathToFile = os.path.join(pathToDir, filename)
         data = pd.read_csv(pathToFile)
-        if "Reaction ID" in data.columns:
-            data = data.drop(columns=["Reaction ID"])
         allData = pd.concat([allData, data], ignore_index=True)
+
 data = allData.copy()
 data = data[data['Yield'] < 100]
 data = data[data['Yield'] != 0]
